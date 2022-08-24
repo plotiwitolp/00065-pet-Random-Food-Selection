@@ -66,22 +66,14 @@ let chRot = 0;
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-// const rndInt = randomIntFromInterval(1, 6);
 
 function twister(circle) {
+  const randNumb = randomIntFromInterval(300, 3000);
   let twistCircle = setInterval(() => {
     circle.style.rotate = `${chRot++}deg`;
-
-    if (chRot > 1 * randomIntFromInterval(1000, 2000)) {
+    if (chRot > randNumb) {
       clearInterval(twistCircle);
       chRot = 0;
     }
   }, 1);
 }
-
-// setInterval(() => {
-//   second.style.rotate = `${chRot++}deg`;
-// }, 1);
-// setInterval(() => {
-//   dessert.style.rotate = `${chRot++}deg`;
-// }, 1);

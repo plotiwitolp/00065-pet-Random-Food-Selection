@@ -33,7 +33,7 @@ require_once './bd.php';
                 <span class="center"></span>
             </div>
             <div class="rand-btn">
-                <button onclick="twister(desserts);">ПУСК</button>
+                <button onclick="twister(dessert);">ПУСК</button>
             </div>
         </div>
     </div>
