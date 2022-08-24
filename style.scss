@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+$main_bg_color: rgb(38, 33, 33);
+$body_bg_color: rgb(59, 30, 30);
+$btn_bg_color: rgb(164, 125, 87);
+$main_color: rgb(242, 234, 234);
+html,
+body {
+  height: 100%;
+  color: $main_color;
+  background-color: $body_bg_color;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a {
+  color: $main_color;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 10px;
+}
+.header {
+  height: 50px;
+  background-color: $main_bg_color;
+  border-bottom: 1px solid $main_color;
+}
+.main {
+  background-color: $main_bg_color;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 70px;
+}
+.footer {
+  height: 200px;
+  background-color: $main_bg_color;
+  border-top: 1px solid $main_color;
+}
+.circle {
+  width: calc((1200px / 3) - 20px);
+  height: calc((1200px / 3) - 20px);
+  background-color: rgb(35 45 78);
+  border-radius: 50%;
+  box-shadow: 1px 2px 20px #000;
+}
+.rand-btn {
+  width: calc((1200px / 3) - 40px);
+  height: 50px;
+  position: relative;
+  z-index: 99999;
+}
+button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 32px;
+  background: $btn_bg_color;
+  outline: none;
+  color: $main_color;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.rand-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+//
+.circle {
+  position: relative;
+}
+.center {
+  position: absolute;
+  left: calc(50% - 25px);
+  top: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(220, 212, 72);
+  z-index: 9;
+  box-shadow: 1px 2px 10px #000, inset 1px 2px 12px #000;
+}
+.rand-group {
+  position: relative;
+  .arrow {
+    position: absolute;
+    top: 22%;
+    left: 12%;
+    width: 50px;
+    height: 2px;
+    background-color: rgb(255, 25, 0);
+    rotate: 227deg;
+    z-index: 8;
+    opacity: 0.8;
+    box-shadow: 1px 2px 3px #000;
+    &::after {
+      content: '';
+      display: block;
+      border-left: 40px solid #ff0000;
+      border-top: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      rotate: 180deg;
+      position: absolute;
+      left: -24px;
+      top: -18px;
+    }
+  }
+}
