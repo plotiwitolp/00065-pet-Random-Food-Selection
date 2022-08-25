@@ -196,4 +196,4 @@ function fanfare() {
   }, timeInterval);
 }
 
-fanfare();
+// fanfare();
