@@ -3,15 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-$main_bg_color: rgb(38, 33, 33);
-$body_bg_color: rgb(59, 30, 30);
+$main_bg_color: rgba(38, 33, 33, 0.588);
+$body_bg_color: rgba(59, 30, 30, 0.507);
 $btn_bg_color: rgb(164, 125, 87);
 $main_color: rgb(242, 234, 234);
 html,
 body {
+  position: relative;
+  z-index: -2;
   height: 100%;
   color: $main_color;
-  background-color: $body_bg_color;
+  transition: background-color 0.9s;
+  background-color: #081c08e6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 a {
@@ -29,6 +32,8 @@ main {
   margin: 0 auto;
   max-width: 1200px;
   padding: 10px;
+  box-shadow: 0px 0px 100px #0000008f;
+  flex-wrap: wrap;
 }
 .header {
   height: 50px;
@@ -48,14 +53,14 @@ main {
   border-top: 1px solid $main_color;
 }
 .circle {
-  width: calc((1200px / 3) - 20px);
-  height: calc((1200px / 3) - 20px);
-  background-color: rgb(35 45 78);
+  width: calc((1080px / 3) - 20px);
+  height: calc((1080px / 3) - 20px);
+  background-color: #232d4e59;
   border-radius: 50%;
   box-shadow: 1px 2px 20px #000;
 }
 .rand-btn {
-  width: calc((1200px / 3) - 40px);
+  width: calc((1080px / 3) - 40px);
   height: 50px;
   position: relative;
   z-index: 99999;
@@ -71,8 +76,13 @@ button {
   outline: none;
   color: $main_color;
   transition: 0.2s;
+  box-shadow: 1px 2px 20px #000;
   &:hover {
+    opacity: 0.8;
+  }
+  &:disabled {
     opacity: 0.5;
+    cursor: context-menu;
   }
 }
 .rand-group {
@@ -87,10 +97,10 @@ button {
 }
 .center {
   position: absolute;
-  left: calc(50% - 25px);
-  top: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: rgb(220, 212, 72);
   z-index: 9;
@@ -100,12 +110,12 @@ button {
   position: relative;
   .arrow {
     position: absolute;
-    top: 22%;
-    left: 12%;
+    top: 110px;
+    left: 0px;
     width: 50px;
     height: 2px;
     background-color: rgb(255, 25, 0);
-    rotate: 227deg;
+    rotate: 220deg;
     z-index: 8;
     opacity: 0.8;
     box-shadow: 1px 2px 3px #000;
@@ -121,5 +131,16 @@ button {
       left: -24px;
       top: -18px;
     }
+  }
+}
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+@media (max-width: 1230px) {
+  .container {
+    max-width: 380px;
   }
 }

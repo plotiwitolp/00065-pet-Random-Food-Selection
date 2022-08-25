@@ -7,9 +7,13 @@
 
 html,
 body {
+  position: relative;
+  z-index: -2;
   height: 100%;
   color: rgb(242, 234, 234);
-  background-color: rgb(59, 30, 30);
+  -webkit-transition: background-color 0.9s;
+  transition: background-color 0.9s;
+  background-color: rgba(8, 28, 8, 0.9019607843);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -37,16 +41,20 @@ main {
   margin: 0 auto;
   max-width: 1200px;
   padding: 10px;
+  -webkit-box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5607843137);
+          box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5607843137);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .header {
   height: 50px;
-  background-color: rgb(38, 33, 33);
+  background-color: rgba(38, 33, 33, 0.588);
   border-bottom: 1px solid rgb(242, 234, 234);
 }
 
 .main {
-  background-color: rgb(38, 33, 33);
+  background-color: rgba(38, 33, 33, 0.588);
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,21 +66,21 @@ main {
 
 .footer {
   height: 200px;
-  background-color: rgb(38, 33, 33);
+  background-color: rgba(38, 33, 33, 0.588);
   border-top: 1px solid rgb(242, 234, 234);
 }
 
 .circle {
-  width: 380px;
-  height: 380px;
-  background-color: rgb(35, 45, 78);
+  width: 340px;
+  height: 340px;
+  background-color: rgba(35, 45, 78, 0.3490196078);
   border-radius: 50%;
   -webkit-box-shadow: 1px 2px 20px #000;
           box-shadow: 1px 2px 20px #000;
 }
 
 .rand-btn {
-  width: 360px;
+  width: 320px;
   height: 50px;
   position: relative;
   z-index: 99999;
@@ -90,9 +98,15 @@ button {
   color: rgb(242, 234, 234);
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  -webkit-box-shadow: 1px 2px 20px #000;
+          box-shadow: 1px 2px 20px #000;
 }
 button:hover {
+  opacity: 0.8;
+}
+button:disabled {
   opacity: 0.5;
+  cursor: context-menu;
 }
 
 .rand-group {
@@ -115,10 +129,10 @@ button:hover {
 
 .center {
   position: absolute;
-  left: calc(50% - 25px);
-  top: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: rgb(220, 212, 72);
   z-index: 9;
@@ -131,12 +145,12 @@ button:hover {
 }
 .rand-group .arrow {
   position: absolute;
-  top: 22%;
-  left: 12%;
+  top: 110px;
+  left: 0px;
   width: 50px;
   height: 2px;
   background-color: rgb(255, 25, 0);
-  rotate: 227deg;
+  rotate: 220deg;
   z-index: 8;
   opacity: 0.8;
   -webkit-box-shadow: 1px 2px 3px #000;
@@ -153,4 +167,17 @@ button:hover {
   position: absolute;
   left: -24px;
   top: -18px;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@media (max-width: 1230px) {
+  .container {
+    max-width: 380px;
+  }
 }
