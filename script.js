@@ -1,25 +1,36 @@
 const dishList = document.getElementById('dishList');
 const dishCatIdList = document.getElementById('dishCatIdList');
 const dishCatList = document.getElementById('dishCatList');
+const dishLinkList = document.getElementById('dishLinkList');
 
 const dishListFromBD = dishList.getAttribute('data-attr');
 const dishCatIdListFromDB = dishCatIdList.getAttribute('data-attr');
 const dishCatListFromBD = dishCatList.getAttribute('data-attr');
+const dishLinkListFromBD = dishLinkList.getAttribute('data-attr');
 
 const dish = dishListFromBD.split(',');
 const dishCatId = dishCatIdListFromDB.split(',');
 const dishCat = dishCatListFromBD.split(',');
+const dishLink = dishLinkListFromBD.split(',');
 
 const firstDish = [];
 const secondDish = [];
 const dessertDish = [];
+
+const firstDishLink = [];
+const secondDishLink = [];
+const dessertDishLink = [];
+
 for (let i = 0; i < dish.length; i++) {
   if (dishCatId[i] == 1) {
     firstDish.push(dish[i]);
+    firstDishLink.push(dishLink[i]);
   } else if (dishCatId[i] == 2) {
     secondDish.push(dish[i]);
+    secondDishLink.push(dishLink[i]);
   } else if (dishCatId[i] == 3) {
     dessertDish.push(dish[i]);
+    dessertDishLink.push(dishLink[i]);
   }
 }
 const first = document.getElementById('first');
@@ -34,7 +45,7 @@ const buttonStop = document.getElementById('button_stop');
 
 let funf;
 
-function createRad(deg, text) {
+function createRad(deg, text, link) {
   const rad = document.createElement('span');
   rad.style.display = 'block';
   rad.style.width = '2px';
@@ -51,20 +62,24 @@ function createRad(deg, text) {
   b.style.top = '0';
   b.style.right = '75px';
   b.style.color = `white`;
+  const a = document.createElement('a');
+  a.setAttribute('href', link);
+  a.setAttribute('target', '_blank');
   rad.append(b);
-  b.innerText = text;
+  b.append(a);
+  a.innerText = text;
   return rad;
 }
 
-function appendEls(food, circle) {
+function appendEls(food, circle, dishLink) {
   for (let i = 0; i < food.length; i++) {
-    circle.append(createRad(i * (360 / food.length), food[i]));
+    circle.append(createRad(i * (360 / food.length), food[i], dishLink[i]));
   }
 }
 
-appendEls(firstDish, first);
-appendEls(secondDish, second);
-appendEls(dessertDish, dessert);
+appendEls(firstDish, first, firstDishLink);
+appendEls(secondDish, second, secondDishLink);
+appendEls(dessertDish, dessert, dessertDishLink);
 
 let chRot = 0;
 
@@ -108,10 +123,7 @@ function fanfare() {
   var H = (c.height = document.body.clientHeight);
   // screen.height; //высота - это не "во весь экран", а больше из-за служебных областей окна
   var Objects = [];
-  var Colors =
-    '255,0,0;0,255,0;0,0,255;255,255,0;255,0,255;0,255,255;255,255,204;255,204,255;204,255,255'.split(
-      ';'
-    );
+  var Colors = '255,0,0;0,255,0;0,0,255;255,255,0;255,0,255;0,255,255;255,255,204;255,204,255;204,255,255'.split(';');
   var timeInterval = 20; //частота обновления, мс
   var petardColor = 'rgb(255,0,0)'; //цвет петарды до взрыва
   var numRays = 16; //количество лучей <s>чучхе</s> при взрыве
@@ -156,14 +168,7 @@ function fanfare() {
         this.x += Math.cos(f) * this.s;
         this.y += Math.sin(f) * this.s;
         a['globalCompositeOperation'] = 'lighter';
-        g = a.createRadialGradient(
-          this.x,
-          this.y,
-          1,
-          this.x,
-          this.y,
-          fireBallRadius
-        );
+        g = a.createRadialGradient(this.x, this.y, 1, this.x, this.y, fireBallRadius);
         g['addColorStop'](0, 'rgba(255,255,255,.55)');
         g['addColorStop'](1, 'rgba(' + this.g + ',.03)');
         ColorPath(this.x, this.y, fireRadius, g);
@@ -185,8 +190,7 @@ function fanfare() {
       if (obj.t > obj.j) {
         if (!obj.k) {
           h = (Math.random() * Colors.length) | 0;
-          for (c = 0; c < numRays; c++)
-            DeleteObject(new FinalDraw(1, obj.x, obj.y, Colors[h]));
+          for (c = 0; c < numRays; c++) DeleteObject(new FinalDraw(1, obj.x, obj.y, Colors[h]));
         }
         DeleteObject(q, 1);
       }

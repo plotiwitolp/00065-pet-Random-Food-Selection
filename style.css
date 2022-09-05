@@ -181,3 +181,6 @@ button:disabled {
     max-width: 380px;
   }
 }
+a[href^=http] {
+  color: #444fcd;
+}

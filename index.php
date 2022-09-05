@@ -7,6 +7,7 @@ require_once './bd.php';
     <div id="dishList" data-attr="<?php foreach ($dishes_arr as $v) echo $v . ','; ?>"></div>
     <div id="dishCatIdList" data-attr="<?php foreach ($dishes_cat_id_arr as $v) echo $v . ','; ?>"></div>
     <div id="dishCatList" data-attr="<?php foreach ($dishes_categories_arr as $v) echo $v . ','; ?>"></div>
+    <div id="dishLinkList" data-attr="<?php foreach ($dishes_link_arr as $v) echo $v . ','; ?>"></div>
 </div>
 <main>
 

@@ -14,6 +14,10 @@ $dishes_cat_id = mysqli_query(
     $connect,
     "SELECT `dish_cat` FROM `dishes`"
 );
+$dishes_link = mysqli_query(
+    $connect,
+    "SELECT `dish_link` FROM `dishes`"
+);
 $dishes_categories = mysqli_query(
     $connect,
     "SELECT `cat_name` FROM `dishes_categories`"
@@ -21,6 +25,7 @@ $dishes_categories = mysqli_query(
 $dishes_arr = [];
 $dishes_cat_id_arr = [];
 $dishes_categories_arr = [];
+$dishes_link_arr = [];
 
 function fillList($list_arr, $query, $key)
 {
@@ -32,9 +37,11 @@ function fillList($list_arr, $query, $key)
 $dishes_arr = fillList($dishes_arr, $dishes, 'dish_name');
 $dishes_cat_id_arr = fillList($dishes_cat_id_arr, $dishes_cat_id, 'dish_cat');
 $dishes_categories_arr = fillList($dishes_categories_arr, $dishes_categories, 'cat_name');
+$dishes_link_arr = fillList($dishes_link_arr, $dishes_link, 'dish_link');
 
 $dishes_arr;
 $dishes_cat_id_arr;
 $dishes_categories_arr;
+$dishes_link_arr;
 
 mysqli_close($connect);
